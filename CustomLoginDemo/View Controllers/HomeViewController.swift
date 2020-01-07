@@ -20,7 +20,7 @@ class HomeViewController: UIViewController, StoryWriterDatasourceDelegate {
     @IBOutlet weak var mapView: MKMapView!
     
     let locationManager = CLLocationManager()
-    let regionInMeter:Double = 10000
+    let regionInMeter:Double = 1000
     
     override func viewDidLoad() {
         super.viewDidLoad()

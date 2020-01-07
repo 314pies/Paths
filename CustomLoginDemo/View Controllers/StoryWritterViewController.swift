@@ -37,7 +37,13 @@ class StoryWritterViewController: UIViewController {
             }
             
         }else{
-             TakePicture()
+            let date = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy.MM.dd"
+            let dateStr = formatter.string(from: date)
+            
+            ContentTexts.text = dateStr + "\nWrite down your story..."
+            TakePicture()
         }
         ContentTexts.isEditable =  !delegate!.IsViewMode
         SubmitButton.isHidden = delegate!.IsViewMode
