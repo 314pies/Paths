@@ -1,6 +1,7 @@
 import MapKit
 import UIKit
 import CoreLocation
+import Firebase
 
 class HomeViewController: UIViewController {
 
@@ -13,6 +14,17 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         checkLocationService()
         // Do any additional setup after loading the view.
+        
+        let db = Firestore.firestore()
+        db.collection("stories").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                }
+            }
+        }
     }
     
     func setUpLocatinManager()  {
