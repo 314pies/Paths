@@ -36,7 +36,7 @@ class ViewController: UIViewController,GIDSignInDelegate,LoginButtonDelegate {
              }
             
             print("Successfully login to Firebase with Facebook!")
-            //self.enterHime()
+            self.enterHime()
        }
     }
     
@@ -61,7 +61,7 @@ class ViewController: UIViewController,GIDSignInDelegate,LoginButtonDelegate {
             guard let uid = user?.userID else {return}
             print("Successfully login to Firebase with Google! userID: ", uid)
           // User is signed in
-            //self.enterHime()
+            self.enterHime()
         }
     }
     
