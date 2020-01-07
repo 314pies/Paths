@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  CustomLoginDemo
-//
-//  Created by Christopher Ching on 2019-07-22.
-//  Copyright © 2019 Christopher Ching. All rights reserved.
-//
-
 import UIKit
 import AVKit
 import GoogleSignIn

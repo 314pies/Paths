@@ -1,11 +1,3 @@
-//
-//  HomeViewController.swift
-//  CustomLoginDemo
-//
-//  Created by Christopher Ching on 2019-07-22.
-//  Copyright © 2019 Christopher Ching. All rights reserved.
-//
-
 import MapKit
 import UIKit
 import CoreLocation
@@ -76,7 +68,11 @@ class HomeViewController: UIViewController {
     
     @IBAction func StartWritingStory(_ sender: Any) {
         
+        let storyWritterViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.storyWritterViewController) as? StoryWritterViewController
+         self.view.window?.rootViewController = storyWritterViewController
+         self.view.window?.makeKeyAndVisible()
     }
+    
     /*
     // MARK: - Navigation
 
