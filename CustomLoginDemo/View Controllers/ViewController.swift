@@ -8,8 +8,34 @@
 
 import UIKit
 import AVKit
+import GoogleSignIn
+import FirebaseAuth
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,GIDSignInDelegate {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+       
+        if let error = error {
+          print("Failed to login to Google: ", error)
+          return
+        }
+        print("Successfully login to Google!")
+        
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                          accessToken: authentication.accessToken)
+        
+        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+          if let error = error {
+            print("Failed to creare a Firebase user with Google account.", error)
+            return
+          }
+            guard let uid = user?.userID else {return}
+            print("Successfully login to Firebase with Google! userID: ", uid)
+          // User is signed in
+          // ...
+        }
+    }
+    
 
     var videoPlayer:AVPlayer?
     
@@ -24,6 +50,15 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         setUpElements()
+        
+        
+        //Google sign-in
+        let googleButton = GIDSignInButton()
+        googleButton.frame = CGRect(x:16, y :320 + 66, width: view.frame.width - 32, height: 50)
+        view.addSubview(googleButton)
+       
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
