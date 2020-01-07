@@ -54,8 +54,10 @@ class HomeViewController: UIViewController, StoryWriterDatasourceDelegate {
                         annotation.coordinate = CLLocationCoordinate2D(latitude:lat!,longitude: lon!)
                         
                         self.mapView.addAnnotation(annotation)
+                        
                     }
                 }
+                self.centerViewOnUserLocation()
             }
         }
     }
