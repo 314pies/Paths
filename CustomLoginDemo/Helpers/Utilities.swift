@@ -1,6 +1,10 @@
 import Foundation
 import UIKit
 
+extension String {
+    var lines: [String] { return self.components(separatedBy: .newlines).filter{!$0.isEmpty} }
+}
+
 class Utilities {
     
     static func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {

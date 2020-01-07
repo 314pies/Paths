@@ -3,9 +3,19 @@ import UIKit
 import CoreLocation
 import Firebase
 
-class HomeViewController: UIViewController {
+protocol StoryWriterDatasourceDelegate {
+    var IsViewMode: Bool { get set }
+    var Title : String {get set}
+    var Content : String {get set}
+    var imagePath: String{get set}
+}
 
-    
+class HomeViewController: UIViewController, StoryWriterDatasourceDelegate {
+    //StoryWriterDatasourceDelegate protocal
+    var Content: String = ""
+    var Title: String = ""
+    var IsViewMode: Bool = false
+    var imagePath: String = ""
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -16,6 +26,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         checkLocationService()
         // Do any additional setup after loading the view.
+        IsViewMode = false
         
         let db = Firestore.firestore()
         db.collection("stories").getDocuments() { (querySnapshot, err) in
@@ -25,14 +36,23 @@ class HomeViewController: UIViewController {
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
                     
+                    let title : String? = document.data()["Title"] as? String
+                    let content : String? = document.data()["content"] as? String
                     let lat : Double? = document.data()["lat"] as? Double
                     let lon : Double? = document.data()["long"] as? Double
                     let imgPath : String? = document.data()["img"] as? String
                     
                     if lat != nil && lon != nil{
                         let annotation = CustomPointAnnotation()
+                        
+                        annotation.title = title
+                        annotation.subtitle = title
+                        
+                        annotation.Title = title
+                        annotation.Content = content
                         annotation.imagePath = imgPath
                         annotation.coordinate = CLLocationCoordinate2D(latitude:lat!,longitude: lon!)
+                        
                         self.mapView.addAnnotation(annotation)
                     }
                 }
@@ -86,7 +106,9 @@ class HomeViewController: UIViewController {
     
     @IBAction func StartWritingStory(_ sender: Any) {
         
+        IsViewMode = false
         let storyWritterViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.storyWritterViewController) as? StoryWritterViewController
+        storyWritterViewController?.delegate = self
          self.view.window?.rootViewController = storyWritterViewController
          self.view.window?.makeKeyAndVisible()
     }
@@ -119,6 +141,9 @@ extension HomeViewController: CLLocationManagerDelegate{
 
 extension HomeViewController : MKMapViewDelegate{
     class CustomPointAnnotation: MKPointAnnotation {
+        var IsViewMode: Bool!
+        var Title : String!
+        var Content : String!
         var imagePath: String!
     }
     
@@ -152,7 +177,23 @@ extension HomeViewController : MKMapViewDelegate{
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        let cpa = view.annotation as! CustomPointAnnotation
-        print("cpa img2: ",cpa.imagePath)
+        if view.annotation is CustomPointAnnotation{
+            let cpa = view.annotation as! CustomPointAnnotation
+            
+            //Set current viewing annotation info
+            Title = cpa.title ?? ""
+            Content = cpa.Content ?? ""
+          
+            imagePath = cpa.imagePath ?? ""
+            print("annotion clocked: ",Title)
+            IsViewMode = true
+            //print("cpa img2: ",cpa.imagePath)
+            
+            let storyWriterController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.storyWritterViewController) as? StoryWritterViewController
+            storyWriterController?.delegate = self
+            
+            self.view.window?.rootViewController = storyWriterController
+            self.view.window?.makeKeyAndVisible()
+        }
     }
 }

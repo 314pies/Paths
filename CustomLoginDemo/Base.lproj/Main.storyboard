@@ -207,7 +207,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H60-Uj-qyi">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H60-Uj-qyi">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <connections>
                                     <outlet property="delegate" destination="MJ4-kS-XxA" id="xxV-kd-rzT"/>
@@ -272,7 +272,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="paperplane" catalog="system"/>
                                 <connections>
-                                    <action selector="Submit:" destination="SRN-NF-obw" eventType="touchUpInside" id="jgu-PL-iJl"/>
+                                    <action selector="Submit:" destination="SRN-NF-obw" eventType="touchUpInside" id="lu8-fO-Bac"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="at7-Dr-6pe">
@@ -287,13 +287,24 @@
                                 <rect key="frame" x="20" y="157" width="374" height="238"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLe-3T-Opa">
+                                <rect key="frame" x="161" y="786" width="93" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" backgroundImage="arrowshape.turn.up.left.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="BacktoHome:" destination="SRN-NF-obw" eventType="touchUpInside" id="sbu-ih-sne"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="cIt-sD-9K1"/>
                     </view>
                     <connections>
+                        <outlet property="BackButton" destination="fLe-3T-Opa" id="fhm-uH-HWM"/>
                         <outlet property="ContentTexts" destination="at7-Dr-6pe" id="6Lp-jY-rLq"/>
                         <outlet property="PictureView" destination="WzK-KP-WLF" id="gRC-m2-PGS"/>
+                        <outlet property="SubmitButton" destination="adC-4f-33q" id="4f3-ud-eVv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wo8-id-qfB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -302,6 +313,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrowshape.turn.up.left.circle.fill" catalog="system" width="64" height="60"/>
         <image name="paperplane" catalog="system" width="64" height="60"/>
         <image name="pencil.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
