@@ -116,9 +116,11 @@ class ViewController: UIViewController,GIDSignInDelegate,LoginButtonDelegate {
     func setUpVideo() {
         
         // Get the path to the resource in the bundle
+        //Credits: https://www.pexels.com/video/vast-area-of-dry-land-1572321/
         let bundlePath = Bundle.main.path(forResource: "loginbg", ofType: "mp4")
         
         guard bundlePath != nil else {
+            print("Failed to load video file")
             return
         }
         
@@ -141,6 +143,7 @@ class ViewController: UIViewController,GIDSignInDelegate,LoginButtonDelegate {
         
         // Add it to the view and play it
         videoPlayer?.playImmediately(atRate: 0.3)
+        print("Video played")
     }
 
 
