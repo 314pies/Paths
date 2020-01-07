@@ -60,7 +60,17 @@ class StoryWritterViewController: UIViewController {
         fireStoreImagePath = UUID().uuidString + ".jpg"
         let fileReference = Storage.storage().reference().child(fireStoreImagePath)
         
-            
+        //Loading screen
+        let alert = UIAlertController(title: nil, message: "Writing Journals...", preferredStyle: .alert)
+
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+        //
               
         if let data = PictureView.image?.jpegData(compressionQuality: 0.9) {
           fileReference.putData(data, metadata: nil) { (_, error) in
@@ -84,6 +94,7 @@ class StoryWritterViewController: UIViewController {
                     print("Error adding document: \(err)")
                 } else {
                     print("Document added ")
+                    self.dismiss(animated: false, completion: nil)
                     self.goToHome()
                 }
             }
