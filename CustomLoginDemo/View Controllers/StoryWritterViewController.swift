@@ -32,18 +32,20 @@ class StoryWritterViewController: UIViewController {
                   return
               }
             print("Upload done")
-//              fileReference.downloadURL { (url, error) in
-//                  //completion(url)
-//              }
+              fileReference.downloadURL { (url, error) in
+                print("url: ", url!)
+                                
+                let locationManager = CLLocationManager()
+                let location = locationManager.location?.coordinate
+                let lat = location?.latitude
+                let lon = location?.longitude
+                db.collection("stories").addDocument(data: ["Title":"testTitle","content": self.ContentTexts.text,"lat":lat,"long":lon,"img":url?.absoluteString])
+                self.goToHome()
+              }
           }
         }
         
-        let locationManager = CLLocationManager()
-        let location = locationManager.location?.coordinate
-        let lat = location?.latitude
-        let lon = location?.longitude
-        db.collection("stories").addDocument(data: ["Title":"testTitle","content": ContentTexts.text,"lat":lat,"long":lon])
-        goToHome()
+        
     }
     
     func goToHome()  {
