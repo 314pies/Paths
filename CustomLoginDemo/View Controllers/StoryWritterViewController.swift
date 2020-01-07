@@ -12,6 +12,13 @@ class StoryWritterViewController: UIViewController {
     
     var fireStoreImagePath:String = ""
     
+    var takePictureAfterAppear : Bool = false
+    override func viewDidAppear(_ animated: Bool) {
+        if(takePictureAfterAppear){
+            TakePicture()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fireStoreImagePath = ""
@@ -46,7 +53,8 @@ class StoryWritterViewController: UIViewController {
             let dateStr = formatter.string(from: date)
             ContentTexts.addDoneButtonOnKeyboard()
             ContentTexts.text = dateStr + "\nWrite down your story..."
-            TakePicture()
+            //TakePicture()
+            takePictureAfterAppear = true
         }
         ContentTexts.isEditable =  !delegate!.IsViewMode
         SubmitButton.isHidden = delegate!.IsViewMode
@@ -155,8 +163,8 @@ extension StoryWritterViewController: UINavigationControllerDelegate,UIImagePick
         let image = UIImagePickerController()
         image.delegate = self
         if UIImagePickerController.isSourceTypeAvailable(.camera){
-            //image.sourceType = .camera
-            image.sourceType = .photoLibrary
+            image.sourceType = .camera
+//            image.sourceType = .photoLibrary
         }
         else{
             image.sourceType = .savedPhotosAlbum
@@ -174,6 +182,7 @@ extension StoryWritterViewController: UINavigationControllerDelegate,UIImagePick
         }else{
            //Error
         }
+        takePictureAfterAppear = false
         self.dismiss(animated: true, completion:nil)
     }
 }
