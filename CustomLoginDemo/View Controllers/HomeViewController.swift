@@ -74,6 +74,9 @@ class HomeViewController: UIViewController {
         
     }
     
+    @IBAction func StartWritingStory(_ sender: Any) {
+        
+    }
     /*
     // MARK: - Navigation
 

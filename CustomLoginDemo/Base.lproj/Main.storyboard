@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MJ4-kS-XxA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Uzo-nw-CwT">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -207,25 +207,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jia-Xq-yQz">
-                                <rect key="frame" x="167.5" y="437.5" width="79" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="H60-Uj-qyi">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <connections>
                                     <outlet property="delegate" destination="MJ4-kS-XxA" id="xxV-kd-rzT"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNf-Li-q5d">
+                                <rect key="frame" x="157" y="751" width="101" height="103"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" backgroundImage="pencil.circle.fill" catalog="system">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="StartWritingStory:" destination="MJ4-kS-XxA" eventType="touchUpInside" id="4YG-CF-9Ma"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Jia-Xq-yQz" firstAttribute="centerX" secondItem="PNx-Nd-TAi" secondAttribute="centerX" id="00s-hK-cMx"/>
                             <constraint firstItem="Pya-hN-kNE" firstAttribute="trailing" secondItem="H60-Uj-qyi" secondAttribute="trailing" id="6aH-Rg-06M"/>
                             <constraint firstItem="Pya-hN-kNE" firstAttribute="bottom" secondItem="H60-Uj-qyi" secondAttribute="bottom" id="LOs-0u-RHc"/>
-                            <constraint firstItem="Jia-Xq-yQz" firstAttribute="centerY" secondItem="PNx-Nd-TAi" secondAttribute="centerY" id="N4N-1L-gdG"/>
                             <constraint firstItem="H60-Uj-qyi" firstAttribute="leading" secondItem="Pya-hN-kNE" secondAttribute="leading" id="brq-09-j8a"/>
                             <constraint firstItem="H60-Uj-qyi" firstAttribute="top" secondItem="Pya-hN-kNE" secondAttribute="top" id="yOt-51-fPv"/>
                         </constraints>
@@ -237,7 +240,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fX7-dn-cHV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="106" y="816"/>
+            <point key="canvasLocation" x="105.79710144927537" y="815.625"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ewl-h1-nOx">
@@ -256,5 +259,23 @@
             </objects>
             <point key="canvasLocation" x="105.79710144927537" y="137.94642857142856"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="kkc-jc-rnj">
+            <objects>
+                <viewController id="SRN-NF-obw" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ISh-Cr-7UD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="cIt-sD-9K1"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wo8-id-qfB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="842" y="816"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="pencil.circle.fill" catalog="system" width="64" height="60"/>
+    </resources>
 </document>
