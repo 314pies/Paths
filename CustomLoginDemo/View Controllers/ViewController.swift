@@ -10,8 +10,37 @@ import UIKit
 import AVKit
 import GoogleSignIn
 import FirebaseAuth
+import FBSDKLoginKit
 
-class ViewController: UIViewController,GIDSignInDelegate {
+class ViewController: UIViewController,GIDSignInDelegate,LoginButtonDelegate {
+    
+    //Facebook Login
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        print("Facebook Logout")
+    }
+    
+    
+    //Facebook Login
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        if let error = error {
+          print("Facebook login failed: ", error.localizedDescription)
+          return
+        }
+        print("Facebook login success")
+        
+        let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
+        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+            if let error = error {
+               print("Failed to creare a Facebook user with Facebook account.", error)
+               return
+             }
+            
+            print("Successfully login to Firebase with Facebook!")
+            //self.enterHime()
+       }
+    }
+    
+    //Google login
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
        
         if let error = error {
@@ -32,10 +61,16 @@ class ViewController: UIViewController,GIDSignInDelegate {
             guard let uid = user?.userID else {return}
             print("Successfully login to Firebase with Google! userID: ", uid)
           // User is signed in
-          // ...
+            //self.enterHime()
         }
     }
     
+    func enterHime() {
+        let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+                       
+                       self.view.window?.rootViewController = homeViewController
+                       self.view.window?.makeKeyAndVisible()
+    }
 
     var videoPlayer:AVPlayer?
     
@@ -55,10 +90,22 @@ class ViewController: UIViewController,GIDSignInDelegate {
         //Google sign-in
         let googleButton = GIDSignInButton()
         googleButton.frame = CGRect(x:16, y :320 + 66, width: view.frame.width - 32, height: 50)
+        
         view.addSubview(googleButton)
        
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance()?.delegate = self
+        
+        //Facebook sign-in
+        let FacebookButton = FBLoginButton()
+        
+        FacebookButton.frame = CGRect(x:16, y :320 + 66 + 66, width: view.frame.width - 32, height: 50)
+        let buttonText = NSAttributedString(string: "      Sign in")
+        FacebookButton.setAttributedTitle(buttonText, for: .normal)
+        FacebookButton.contentHorizontalAlignment = .center
+        
+        view.addSubview(FacebookButton)
+        FacebookButton.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {

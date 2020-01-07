@@ -12,4 +12,8 @@ target 'CustomLoginDemo' do
 	pod 'Firebase/Core'
 	pod 'Firebase/Firestore'
 	pod 'GoogleSignIn'
+
+	pod 'FBSDKCoreKit'
+
+	pod 'FBSDKLoginKit'
 end

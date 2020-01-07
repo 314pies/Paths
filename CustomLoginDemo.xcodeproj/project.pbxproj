@@ -24,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06925CE423C460D900387CF6 /* Unamed002.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Unamed002.entitlements; sourceTree = "<group>"; };
 		266E92BF52F2752B81465D0D /* Pods-CustomLoginDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomLoginDemo.release.xcconfig"; path = "Target Support Files/Pods-CustomLoginDemo/Pods-CustomLoginDemo.release.xcconfig"; sourceTree = "<group>"; };
 		830C3D8C22E659BD001FA4E7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		830C3D8E22E7523E001FA4E7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -102,6 +103,7 @@
 		8314D43122E644CC001D044A /* CustomLoginDemo */ = {
 			isa = PBXGroup;
 			children = (
+				06925CE423C460D900387CF6 /* Unamed002.entitlements */,
 				8314D43222E644CC001D044A /* AppDelegate.swift */,
 				8314D43422E644CC001D044A /* SceneDelegate.swift */,
 				8397D20F22E64A7D00CB78DD /* Helpers */,
@@ -423,8 +425,9 @@
 			baseConfigurationReference = ACB20647BFB76A962B3E918B /* Pods-CustomLoginDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CustomLoginDemo/Unamed002.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RYRJQ978K4;
+				DEVELOPMENT_TEAM = 7WY6U284VJ;
 				INFOPLIST_FILE = CustomLoginDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -442,8 +445,9 @@
 			baseConfigurationReference = 266E92BF52F2752B81465D0D /* Pods-CustomLoginDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CustomLoginDemo/Unamed002.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RYRJQ978K4;
+				DEVELOPMENT_TEAM = 7WY6U284VJ;
 				INFOPLIST_FILE = CustomLoginDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
