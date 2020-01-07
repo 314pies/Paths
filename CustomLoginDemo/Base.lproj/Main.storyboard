@@ -228,7 +228,7 @@
                                     <constraint firstAttribute="height" constant="101" id="E4f-Vl-PUg"/>
                                     <constraint firstAttribute="width" constant="101" id="w1S-lm-D3t"/>
                                 </constraints>
-                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="tintColor" systemColor="placeholderTextColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" backgroundImage="pencil.circle.fill" catalog="system">
                                     <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
