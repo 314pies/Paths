@@ -3,6 +3,9 @@ import Firebase
 import CoreLocation
 import FirebaseFirestore
 
+
+
+
 class StoryWritterViewController: UIViewController {
     
     var delegate: StoryWriterDatasourceDelegate?
@@ -41,7 +44,7 @@ class StoryWritterViewController: UIViewController {
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy.MM.dd"
             let dateStr = formatter.string(from: date)
-            
+            ContentTexts.addDoneButtonOnKeyboard()
             ContentTexts.text = dateStr + "\nWrite down your story..."
             TakePicture()
         }
@@ -152,7 +155,8 @@ extension StoryWritterViewController: UINavigationControllerDelegate,UIImagePick
         let image = UIImagePickerController()
         image.delegate = self
         if UIImagePickerController.isSourceTypeAvailable(.camera){
-            image.sourceType = .camera
+            //image.sourceType = .camera
+            image.sourceType = .photoLibrary
         }
         else{
             image.sourceType = .savedPhotosAlbum
