@@ -41,7 +41,7 @@
                                 </constraints>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PathLogo1" translatesAutoresizingMaskIntoConstraints="NO" id="qQB-aT-ejC">
-                                <rect key="frame" x="86.999999999999986" y="144" width="240.00000000000003" height="128"/>
+                                <rect key="frame" x="87" y="144" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="Fmr-tz-XQb"/>
                                 </constraints>
