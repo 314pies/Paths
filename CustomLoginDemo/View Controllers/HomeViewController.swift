@@ -2,6 +2,7 @@ import MapKit
 import UIKit
 import CoreLocation
 import Firebase
+import SwiftUI
 
 protocol StoryWriterDatasourceDelegate {
     var IsViewMode: Bool { get set }
@@ -115,6 +116,12 @@ class HomeViewController: UIViewController, StoryWriterDatasourceDelegate {
          self.view.window?.makeKeyAndVisible()
     }
     
+    @IBAction func OnProfileClicked(_ sender: Any) {
+        let profileView = ProfileView()
+        let host = UIHostingController(rootView: profileView)
+        self.view.window?.rootViewController = host
+        self.view.window?.makeKeyAndVisible()
+    }
     /*
     // MARK: - Navigation
 
@@ -198,4 +205,7 @@ extension HomeViewController : MKMapViewDelegate{
             self.view.window?.makeKeyAndVisible()
         }
     }
+    
+    
+    
 }
