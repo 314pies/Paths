@@ -63,6 +63,14 @@ class HomeViewController: UIViewController, StoryWriterDatasourceDelegate {
         }
     }
     
+    @IBAction func ViewLocation(_ sender: Any) {
+        let locationView = LocationsView()
+        let host = UIHostingController(rootView: locationView)
+        self.view.window?.rootViewController = host
+        self.view.window?.makeKeyAndVisible()
+    }
+    
+    
     func setUpLocatinManager()  {
         locationManager.delegate = self;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
