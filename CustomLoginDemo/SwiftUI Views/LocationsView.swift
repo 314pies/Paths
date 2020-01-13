@@ -50,7 +50,7 @@ struct LocationsView: View {
        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Location")
        var names:Array<String> = Array()
         if(!(searchTerm ?? "").isEmpty){
-            request.predicate = NSPredicate(format: "title BEGINSWITH %@", searchTerm)
+            request.predicate = NSPredicate(format: "title contains %@", searchTerm)
         }
         
        
@@ -80,7 +80,7 @@ struct LocationsView: View {
                     Text(name)
                 }
             }
-            .navigationBarTitle(Text("Search Bar"))
+            .navigationBarTitle(Text("My Locations"))
         }
     }
 }
