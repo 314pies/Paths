@@ -4,6 +4,7 @@ import CoreLocation
 import Firebase
 import SwiftUI
 import CoreData
+import QuickLook
 
 protocol StoryWriterDatasourceDelegate {
     var IsViewMode: Bool { get set }
@@ -42,6 +43,11 @@ class HomeViewController: UIViewController, StoryWriterDatasourceDelegate {
             fatalError("\(error)")
         }
         
+    }
+    @IBAction func ViewRecommendScene(_ sender: Any) {
+        let previewController = QLPreviewController()
+        previewController.dataSource = self
+        present(previewController, animated: true)
     }
     
     override func viewDidLoad() {
@@ -104,6 +110,10 @@ class HomeViewController: UIViewController, StoryWriterDatasourceDelegate {
         if let location = locationManager.location?.coordinate{
             let region = MKCoordinateRegion.init(center: location,latitudinalMeters: regionInMeter,longitudinalMeters: regionInMeter)
             mapView.setRegion(region, animated: true)
+            
+            var latiText: String = "\(location.latitude)"
+            var longText: String = "\(location.longitude)"
+            FlickrSearch.fetchData(lat: latiText,lon: longText)
         }
     }
     
@@ -163,6 +173,35 @@ class HomeViewController: UIViewController, StoryWriterDatasourceDelegate {
     }
     */
 
+}
+
+extension HomeViewController : QLPreviewControllerDataSource{
+    
+    
+    
+    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+        return FlickrSearch.filePathes.count
+    }
+    
+    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+        print(index)
+        return URL(fileURLWithPath: FlickrSearch.filePathes[index]) as QLPreviewItem
+//         URL(fileURLWithPath: preItemArr[index] as? String ?? "")
+//        return URL(fileURLWithPath: "https://i.stack.imgur.com/G8uj5.png") as QLPreviewItem
+        //return "https://i.stack.imgur.com/G8uj5.png"! as QLPreviewItem
+    }
+    
+//    func asd()  {
+//
+//        NetworkUtility.downloadImage(url: cell.imageURL) { (image) in
+//           if cell.imageURL == photo.imageUrl, let image = image  {
+//               DispatchQueue.main.async {
+//                   cell.photoImageView.image = image
+//               }
+//           }
+//        }
+//    }
+    
 }
 
 extension HomeViewController: CLLocationManagerDelegate{

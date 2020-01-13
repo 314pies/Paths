@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		064D88A723CC803300F786C3 /* MyDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 064D88A523CC803300F786C3 /* MyDataModel.xcdatamodeld */; };
+		064D88B623CCA5A600F786C3 /* FlickrSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064D88B523CCA5A600F786C3 /* FlickrSearch.swift */; };
+		064D88B823CCA5CE00F786C3 /* SearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064D88B723CCA5CE00F786C3 /* SearchData.swift */; };
+		064D88BA23CCB54000F786C3 /* NetworkUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064D88B923CCB54000F786C3 /* NetworkUtility.swift */; };
 		0650F08B23C76FDD00535F89 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0650F08A23C76FDD00535F89 /* ProfileView.swift */; };
 		06925CE623C497C000387CF6 /* StoryWritterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06925CE523C497C000387CF6 /* StoryWritterViewController.swift */; };
 		06A6BBC623CC6CE300271E70 /* LocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6BBC523CC6CE300271E70 /* LocationsView.swift */; };
@@ -29,6 +32,9 @@
 
 /* Begin PBXFileReference section */
 		064D88A623CC803300F786C3 /* MyDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyDataModel.xcdatamodel; sourceTree = "<group>"; };
+		064D88B523CCA5A600F786C3 /* FlickrSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrSearch.swift; sourceTree = "<group>"; };
+		064D88B723CCA5CE00F786C3 /* SearchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchData.swift; sourceTree = "<group>"; };
+		064D88B923CCB54000F786C3 /* NetworkUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUtility.swift; sourceTree = "<group>"; };
 		0650F08A23C76FDD00535F89 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		06925CE423C460D900387CF6 /* Unamed002.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Unamed002.entitlements; sourceTree = "<group>"; };
 		06925CE523C497C000387CF6 /* StoryWritterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryWritterViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +71,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		064D88B423CCA57800F786C3 /* FlickrAPI */ = {
+			isa = PBXGroup;
+			children = (
+				064D88B723CCA5CE00F786C3 /* SearchData.swift */,
+				064D88B523CCA5A600F786C3 /* FlickrSearch.swift */,
+			);
+			path = FlickrAPI;
+			sourceTree = "<group>";
+		};
 		0650F08923C76FB300535F89 /* SwiftUI Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +135,7 @@
 		8314D43122E644CC001D044A /* CustomLoginDemo */ = {
 			isa = PBXGroup;
 			children = (
+				064D88B423CCA57800F786C3 /* FlickrAPI */,
 				064D88A523CC803300F786C3 /* MyDataModel.xcdatamodeld */,
 				0650F08923C76FB300535F89 /* SwiftUI Views */,
 				06925CE423C460D900387CF6 /* Unamed002.entitlements */,
@@ -152,6 +168,7 @@
 		8397D20F22E64A7D00CB78DD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				064D88B923CCB54000F786C3 /* NetworkUtility.swift */,
 				8397D20D22E64A7500CB78DD /* Utilities.swift */,
 				830C3D8E22E7523E001FA4E7 /* Constants.swift */,
 			);
@@ -294,13 +311,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8314D43722E644CC001D044A /* ViewController.swift in Sources */,
+				064D88B623CCA5A600F786C3 /* FlickrSearch.swift in Sources */,
 				8314D43322E644CC001D044A /* AppDelegate.swift in Sources */,
 				0650F08B23C76FDD00535F89 /* ProfileView.swift in Sources */,
+				064D88BA23CCB54000F786C3 /* NetworkUtility.swift in Sources */,
 				8397D20E22E64A7500CB78DD /* Utilities.swift in Sources */,
 				8314D44722E64515001D044A /* SignUpViewController.swift in Sources */,
 				064D88A723CC803300F786C3 /* MyDataModel.xcdatamodeld in Sources */,
 				8314D44922E64520001D044A /* LoginViewController.swift in Sources */,
 				8314D43522E644CC001D044A /* SceneDelegate.swift in Sources */,
+				064D88B823CCA5CE00F786C3 /* SearchData.swift in Sources */,
 				06A6BBC623CC6CE300271E70 /* LocationsView.swift in Sources */,
 				06925CE623C497C000387CF6 /* StoryWritterViewController.swift in Sources */,
 				8314D44B22E6452C001D044A /* HomeViewController.swift in Sources */,
