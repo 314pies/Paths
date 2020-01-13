@@ -7,25 +7,79 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct LocationsView: View {
     
     let names = ["Raju", "Ghanshyam", "Baburao Ganpatrao Apte", "Anuradha", "Kabira", "Chaman Jhinga", "Devi Prasad", "Khadak Singh"]
     
     @State private var searchTerm : String = ""
+    let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    init() {
+        
+//        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Location")
+//        do {
+//
+//            let results =
+//                try moc.fetch(request) as! [Location]
+//
+//            for result in results {
+//                print("Core data readed. Title: ",result.title," content: ", result.content)
+//            }
+//
+//        } catch {
+//            fatalError("\(error)")
+//        }
+//
+//
+//        //
+//
+//       let fetchRequest = NSFetchRequest<Location>(entityName: "Location")
+//
+//
+//
+//       do {
+//           let data = try moc.fetch(fetchRequest)
+//       } catch let error as NSError {
+//           print ("Could not fetch. \(error), \(error.userInfo)")
+//       }
+    }
+    
+    func GetListWithSearchTerm(searchTerm:String)-> Array<String>{
+        
+       let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Location")
+       var names:Array<String> = Array()
+        if(!(searchTerm ?? "").isEmpty){
+            request.predicate = NSPredicate(format: "title BEGINSWITH %@", searchTerm)
+        }
+        
+       
+        do {
+           let results = try moc.fetch(request) as! [Location]
+
+           for result in results {
+            if(!(result.title ?? "").isEmpty)
+            {
+                names.append(result.title!)
+            }
+            print("Core data Founded. Title: ",result.title)
+           }
+           
+       } catch {
+           fatalError("\(error)")
+       }
+        
+        return names
+    }
     
     var body: some View {
         NavigationView{
             List {
                 SearchBar(text: $searchTerm)
-                
-                ForEach(self.names.filter{
-                    self.searchTerm.isEmpty ? true : $0.localizedStandardContains(self.searchTerm)
-                }, id: \.self) { name in
+                ForEach(self.GetListWithSearchTerm(searchTerm: searchTerm), id: \.self) { name in
                     Text(name)
                 }
             }
-            
             .navigationBarTitle(Text("Search Bar"))
         }
     }

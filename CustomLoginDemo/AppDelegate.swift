@@ -10,12 +10,35 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import FBSDKCoreKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
+      lazy var persistentContainer: NSPersistentContainer = {
+          let container = NSPersistentContainer(name: "MyDataModel")
+          container.loadPersistentStores { description, error in
+              if let error = error {
+                  fatalError("Unable to load persistent stores: \(error)")
+              }
+          }
+          return container
+      }()
+    
+    func deleteAllCoreData(_ entity:String) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        fetchRequest.returnsObjectsAsFaults = false
+        do {
+            let results = try persistentContainer.viewContext.fetch(fetchRequest)
+            for object in results {
+                guard let objectData = object as? NSManagedObject else {continue}
+                persistentContainer.viewContext.delete(objectData)
+            }
+        } catch let error {
+            print("Detele all data in \(entity) error :", error)
+        }
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -29,7 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application,
             didFinishLaunchingWithOptions: launchOptions
         )
-        
+        //For testing
+        deleteAllCoreData("Location")
         return true
     }
 

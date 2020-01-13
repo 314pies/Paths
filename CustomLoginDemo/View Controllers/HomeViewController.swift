@@ -3,6 +3,7 @@ import UIKit
 import CoreLocation
 import Firebase
 import SwiftUI
+import CoreData
 
 protocol StoryWriterDatasourceDelegate {
     var IsViewMode: Bool { get set }
@@ -23,6 +24,26 @@ class HomeViewController: UIViewController, StoryWriterDatasourceDelegate {
     let locationManager = CLLocationManager()
     let regionInMeter:Double = 1000
     
+    func SaveLocToCoreData(title:String,content:String){
+        let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        let student =
+            NSEntityDescription.insertNewObject(
+                forEntityName: "Location", into: moc)
+          as! Location
+
+        student.title = title
+        student.content = content
+        
+        do {
+            try moc.save()
+            print("Core Data ",content," saved")
+        } catch {
+            fatalError("\(error)")
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         checkLocationService()
@@ -42,6 +63,8 @@ class HomeViewController: UIViewController, StoryWriterDatasourceDelegate {
                     let lat : Double? = document.data()["lat"] as? Double
                     let lon : Double? = document.data()["long"] as? Double
                     let imgPath : String? = document.data()["img"] as? String
+                    
+                    self.SaveLocToCoreData(title: title ?? "",content: content ?? "")
                     
                     if lat != nil && lon != nil{
                         let annotation = CustomPointAnnotation()

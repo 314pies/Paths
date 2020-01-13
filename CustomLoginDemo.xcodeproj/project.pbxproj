@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		064D88A723CC803300F786C3 /* MyDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 064D88A523CC803300F786C3 /* MyDataModel.xcdatamodeld */; };
 		0650F08B23C76FDD00535F89 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0650F08A23C76FDD00535F89 /* ProfileView.swift */; };
 		06925CE623C497C000387CF6 /* StoryWritterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06925CE523C497C000387CF6 /* StoryWritterViewController.swift */; };
 		06A6BBC623CC6CE300271E70 /* LocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A6BBC523CC6CE300271E70 /* LocationsView.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		064D88A623CC803300F786C3 /* MyDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyDataModel.xcdatamodel; sourceTree = "<group>"; };
 		0650F08A23C76FDD00535F89 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		06925CE423C460D900387CF6 /* Unamed002.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Unamed002.entitlements; sourceTree = "<group>"; };
 		06925CE523C497C000387CF6 /* StoryWritterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryWritterViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		8314D43122E644CC001D044A /* CustomLoginDemo */ = {
 			isa = PBXGroup;
 			children = (
+				064D88A523CC803300F786C3 /* MyDataModel.xcdatamodeld */,
 				0650F08923C76FB300535F89 /* SwiftUI Views */,
 				06925CE423C460D900387CF6 /* Unamed002.entitlements */,
 				8314D43222E644CC001D044A /* AppDelegate.swift */,
@@ -295,6 +298,7 @@
 				0650F08B23C76FDD00535F89 /* ProfileView.swift in Sources */,
 				8397D20E22E64A7500CB78DD /* Utilities.swift in Sources */,
 				8314D44722E64515001D044A /* SignUpViewController.swift in Sources */,
+				064D88A723CC803300F786C3 /* MyDataModel.xcdatamodeld in Sources */,
 				8314D44922E64520001D044A /* LoginViewController.swift in Sources */,
 				8314D43522E644CC001D044A /* SceneDelegate.swift in Sources */,
 				06A6BBC623CC6CE300271E70 /* LocationsView.swift in Sources */,
@@ -502,6 +506,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		064D88A523CC803300F786C3 /* MyDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				064D88A623CC803300F786C3 /* MyDataModel.xcdatamodel */,
+			);
+			currentVersion = 064D88A623CC803300F786C3 /* MyDataModel.xcdatamodel */;
+			path = MyDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8314D42722E644CC001D044A /* Project object */;
 }
