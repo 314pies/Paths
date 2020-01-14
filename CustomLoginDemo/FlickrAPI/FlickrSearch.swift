@@ -18,7 +18,7 @@ class FlickrSearch{
     
     //24.826990
     //121.013000
-    static let APIKey:String = "535a87a2f2c770de1777c7a7931a724f"
+    static let APIKey:String = "6573cd890ccc4dbc709ec47478a12a06"
     static func fetchData(lat: String, lon: String) {
         print("Fetching Flicker data from location: ",lat," and ",lon)
         if let url = URL(string: "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key="+APIKey+"&per_page=20&format=json&nojsoncallback=1&lat="+lat+"&lon="+lon) {
