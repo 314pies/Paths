@@ -37,7 +37,7 @@ I hope that through Paths, people can record the most beautiful and unique momen
 ![](https://miro.medium.com/max/484/1*ntnosQ7kCUxCq3uC87V28Q.gif)
 
 ### View nearby sceneries
-![](https://miro.medium.com/max/484/1*iTk4bQUNDi3RUtgwUg9zUg.gif)
+![](https://user-images.githubusercontent.com/20402192/93610161-4d796700-f9ff-11ea-9795-b36a3325ce3a.gif)
 
 ### Search visited locations
 ![](https://miro.medium.com/max/484/1*wwUJzNncKihuqBMwgKyjnQ.gif)
