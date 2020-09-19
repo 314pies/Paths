@@ -1,4 +1,5 @@
 # Paths
+An ios app for recording journeys. (Xcode Project)
 
 ## Concept
 Each journey is composed of nodes. Connecting the nodes will eventually form a path, and each path is a unique story.
